@@ -6,7 +6,6 @@ function AppRoutes() {
         <>
             <Routes>
                 <Route path="/" element={<Landing />} />
-
             </Routes>
         </>
     )
