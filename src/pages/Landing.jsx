@@ -75,10 +75,10 @@ export default function Landing() {
     const handleRunSimulation = (e) => {
         e.preventDefault();
         if (!simulatedQuery.trim()) return;
-        
+
         setIsSimulating(true);
         setSimulationOutput("Analyzing natural language data framework structural tokens...");
-        
+
         setTimeout(() => {
             setSimulationOutput("Extracting key target intents: [Domain: Software Engineering], [Regional Tier: Jamshedpur/Jharkhand], [Score Range: 75-85%]. Matching local institutions and internship frames...");
             setIsSimulating(false);
@@ -87,12 +87,12 @@ export default function Landing() {
 
     return (
         <div className="bg-slate-50 min-h-screen text-slate-900 font-sans antialiased overflow-x-hidden">
-            
+
             {/* 1. HERO HEROIC SHOWCASE SECTION (Dual-Source Balance: Platform Ad + Value Prop) */}
             <section className="relative bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white pt-28 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
                 {/* Background decorative grids representing data structures */}
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20"></div>
-                
+
                 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
                     {/* Left Column: Mission Narrative Statement */}
                     <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
@@ -105,16 +105,16 @@ export default function Landing() {
                         <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
                             An advanced intelligence ecosystem dedicated to bridging the critical education-to-employment gap. Get smart psychometric tracking, localized college selection metrics, and conversational guidance tailored to your unique profile.
                         </p>
-                        
+
                         {/* Hero CTA Layout */}
                         <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                            <button 
+                            <button
                                 onClick={() => document.getElementById('working-mechanics').scrollIntoView({ behavior: 'smooth' })}
                                 className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-indigo-600/20 transform hover:-translate-y-0.5 transition-all duration-200 text-sm tracking-wide"
                             >
                                 Explore System Mechanics
                             </button>
-                            <button 
+                            <button
                                 onClick={() => document.getElementById('simulation-sandbox').scrollIntoView({ behavior: 'smooth' })}
                                 className="w-full sm:w-auto bg-white/10 hover:bg-white/15 text-white border border-white/10 font-bold px-8 py-4 rounded-xl backdrop-blur-md transform hover:-translate-y-0.5 transition-all duration-200 text-sm tracking-wide"
                             >
@@ -135,12 +135,12 @@ export default function Landing() {
                         <div className="relative group">
                             {/* Neon glowing backdrop border */}
                             <div className="absolute -inset-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-3xl blur opacity-30 group-hover:opacity-40 transition duration-1000"></div>
-                            
+
                             {/* Primary High-Resolution Professional Placeholder Image Frame */}
                             <div className="relative bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
-                                <img 
-                                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" 
-                                    alt="Students Collaborating on Technological Interface" 
+                                <img
+                                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80"
+                                    alt="Students Collaborating on Technological Interface"
                                     className="w-full h-64 object-cover opacity-80 filter brightness-90 hover:scale-105 transition-transform duration-700"
                                 />
                                 {/* System Overview Mini Stat Display Float */}
@@ -226,7 +226,7 @@ export default function Landing() {
             <section id="working-mechanics" className="bg-slate-900 text-white py-20 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                        
+
                         {/* Left Info Control Block */}
                         <div className="lg:col-span-5 space-y-6">
                             <span className="text-xs font-bold text-indigo-400 uppercase tracking-widest block">Algorithmic Breakdown</span>
@@ -241,15 +241,13 @@ export default function Landing() {
                                     <button
                                         key={idx}
                                         onClick={() => setActiveTab(idx)}
-                                        className={`w-full flex items-center gap-4 text-left p-3.5 rounded-xl border font-semibold transition-all duration-200 ${
-                                            activeTab === idx 
-                                                ? 'bg-indigo-600 border-indigo-500 text-white shadow-lg shadow-indigo-600/10 scale-[1.01]' 
-                                                : 'bg-slate-800/40 border-slate-800 text-slate-400 hover:bg-slate-800/70 hover:text-slate-200'
-                                        }`}
+                                        className={`w-full flex items-center gap-4 text-left p-3.5 rounded-xl border font-semibold transition-all duration-200 ${activeTab === idx
+                                            ? 'bg-indigo-600 border-indigo-500 text-white shadow-lg shadow-indigo-600/10 scale-[1.01]'
+                                            : 'bg-slate-800/40 border-slate-800 text-slate-400 hover:bg-slate-800/70 hover:text-slate-200'
+                                            }`}
                                     >
-                                        <span className={`h-7 w-7 rounded-lg flex items-center justify-center text-xs font-bold ${
-                                            activeTab === idx ? 'bg-white/20 text-white' : 'bg-slate-800 text-slate-300'
-                                        }`}>
+                                        <span className={`h-7 w-7 rounded-lg flex items-center justify-center text-xs font-bold ${activeTab === idx ? 'bg-white/20 text-white' : 'bg-slate-800 text-slate-300'
+                                            }`}>
                                             {item.step}
                                         </span>
                                         <span className="text-sm">{item.title}</span>
@@ -264,7 +262,7 @@ export default function Landing() {
                                 <div className="absolute top-0 right-0 p-6 opacity-5 text-7xl font-black select-none">
                                     {SYSTEM_MECHANICS[activeTab].step}
                                 </div>
-                                
+
                                 <div>
                                     <div className="flex items-center justify-between mb-6">
                                         <span className="bg-indigo-500/10 border border-indigo-400/20 text-indigo-300 text-xs px-3 py-1 rounded-md font-semibold tracking-wide">
@@ -272,7 +270,7 @@ export default function Landing() {
                                         </span>
                                         <span className="text-3xl">{SYSTEM_MECHANICS[activeTab].icon}</span>
                                     </div>
-                                    
+
                                     <h3 className="text-xl sm:text-2xl font-extrabold text-white mb-4 tracking-tight">
                                         {SYSTEM_MECHANICS[activeTab].title}
                                     </h3>
@@ -297,15 +295,15 @@ export default function Landing() {
             {/* 4. HIGH-FIDELITY LIVE INTERACTIVE CONTEXT SIMULATOR SANDBOX */}
             <section id="simulation-sandbox" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    
+
                     {/* Left Column: Conceptual Educational Secondary Image */}
                     <div className="lg:col-span-5 order-last lg:order-first">
                         <div className="relative group">
                             <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-2xl blur opacity-20"></div>
                             <div className="relative bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-md">
-                                <img 
-                                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" 
-                                    alt="Professional Data Infrastructure Interface View" 
+                                <img
+                                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80"
+                                    alt="Professional Data Infrastructure Interface View"
                                     className="w-full h-72 object-cover"
                                 />
                                 <div className="p-4 bg-slate-50 border-t border-slate-100 text-xs text-slate-500 font-medium italic text-center">
@@ -315,32 +313,30 @@ export default function Landing() {
                         </div>
                     </div>
 
-                    {/* Right Column: Dynamic Interactive Sandbox Component */}
-                    <div className="lg:col-span-7 space-y-6">
-                        <div>
-                            <span className="text-xs font-bold text-purple-600 uppercase tracking-widest block mb-1">Sandbox Preview</span>
-                            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">Test the Natural Language Core</h2>
-                            <p className="text-slate-500 text-sm mt-2">
-                                Simulate an query directly inside the sandbox down below to experience how the system filters metadata profiles and resolves student parameters.
-                            </p>
-                        </div>
+                    {/* Right Column: Centered Testing Card Bounded Layout */}
+                    <div className="lg:col-span-7 flex flex-col items-center justify-center">
+                        <form
+                            onSubmit={handleRunSimulation}
+                            className="w-full max-w-3xl bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4"
+                        >
+                            <div className="space-y-2">
+                                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                                    Type Your Academic Goal Statement
+                                </label>
 
-                        {/* Interactive Testing Terminal Card */}
-                        <form onSubmit={handleRunSimulation} className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-4">
-                            <div className="space-y-1.5">
-                                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Type Your Academic Goal Statement</label>
-                                <div className="flex gap-2">
-                                    <input 
-                                        type="text" 
+                                {/* Clean, perfectly inline alignment zone for desktop */}
+                                <div className="flex flex-col sm:flex-row sm:items-center gap-2.5">
+                                    <input
+                                        type="text"
                                         placeholder="e.g., I passed 12th with 82% in Jamshedpur, find local computer courses..."
                                         value={simulatedQuery}
                                         onChange={(e) => setSimulatedQuery(e.target.value)}
-                                        className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+                                        className="w-full sm:flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 h-12 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 min-w-0"
                                     />
-                                    <button 
+                                    <button
                                         type="submit"
                                         disabled={isSimulating}
-                                        className="bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white font-bold px-5 py-3 rounded-xl text-sm transition shadow-sm shrink-0"
+                                        className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white font-bold px-6 h-12 rounded-xl text-sm transition shadow-sm text-center whitespace-nowrap shrink-0"
                                     >
                                         {isSimulating ? "Processing..." : "Compile Input"}
                                     </button>
@@ -348,19 +344,19 @@ export default function Landing() {
                             </div>
 
                             {/* Preset sample injection triggers for easy user clicks */}
-                            <div className="flex flex-wrap items-center gap-2 text-xs">
+                            <div className="flex flex-wrap items-center gap-2 text-xs pt-1">
                                 <span className="text-slate-400 font-semibold">Sample Triggers:</span>
-                                <button 
+                                <button
                                     type="button"
                                     onClick={() => setSimulatedQuery("I have a 78% score and limited budget for B.Tech in Jamshedpur.")}
-                                    className="bg-slate-100 hover:bg-slate-200 text-slate-600 px-2.5 py-1 rounded-lg font-medium transition"
+                                    className="bg-slate-100 hover:bg-slate-200 text-slate-600 px-2.5 py-1.5 rounded-lg font-medium transition"
                                 >
                                     B.Tech Budget Match
                                 </button>
-                                <button 
+                                <button
                                     type="button"
                                     onClick={() => setSimulatedQuery("Show me top commerce paths with high placement records in Jharkhand.")}
-                                    className="bg-slate-100 hover:bg-slate-200 text-slate-600 px-2.5 py-1 rounded-lg font-medium transition"
+                                    className="bg-slate-100 hover:bg-slate-200 text-slate-600 px-2.5 py-1.5 rounded-lg font-medium transition"
                                 >
                                     Commerce Vectors
                                 </button>
@@ -375,7 +371,7 @@ export default function Landing() {
                                             {isSimulating ? "● EXECUTING VECTORS" : "● RUNTIME SUCCESS"}
                                         </span>
                                     </div>
-                                    <p className="leading-relaxed text-indigo-200">{simulationOutput}</p>
+                                    <p className="leading-relaxed text-indigo-200 break-words">{simulationOutput}</p>
                                 </div>
                             )}
                         </form>
@@ -391,7 +387,7 @@ export default function Landing() {
                     <span className="text-[10px] bg-white/10 border border-white/10 text-indigo-200 font-bold uppercase tracking-widest px-3 py-1 rounded-full inline-block">
                         {MOTIVATIONAL_QUOTES[currentQuote].context}
                     </span>
-                    
+
                     {/* Display animated shifting quotation parameters */}
                     <div className="min-h-[100px] flex items-center justify-center">
                         <p className="text-xl sm:text-2xl font-medium italic text-slate-100 leading-relaxed tracking-wide transition-all duration-500 animate-fadeIn">
@@ -410,32 +406,14 @@ export default function Landing() {
                             <button
                                 key={idx}
                                 onClick={() => setCurrentQuote(idx)}
-                                className={`h-2 transition-all duration-300 rounded-full ${
-                                    currentQuote === idx ? 'w-6 bg-indigo-400' : 'w-2 bg-white/20 hover:bg-white/40'
-                                }`}
+                                className={`h-2 transition-all duration-300 rounded-full ${currentQuote === idx ? 'w-6 bg-indigo-400' : 'w-2 bg-white/20 hover:bg-white/40'
+                                    }`}
                                 aria-label={`Maps to quotation index layout card ${idx + 1}`}
                             />
                         ))}
                     </div>
                 </div>
             </section>
-
-            {/* 6. SYSTEM FOOTER PLATFORM MATRIX ACKNOWLEDGEMENTS */}
-            <footer className="bg-white border-t border-slate-200 py-12 px-4 sm:px-6 lg:px-8 text-xs text-slate-500">
-                <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-                    <div className="space-y-1">
-                        <p className="font-bold text-slate-900 text-sm tracking-tight">Career Lift System Dashboard</p>
-                        <p className="font-medium">Designed in compliance with advanced digital structural layout rules.</p>
-                        <p className="text-slate-400">Session Integration: 2021 - 2025 • Technical Core Blueprint Registry.</p>
-                    </div>
-                    <div className="text-center md:text-right space-y-1 font-medium">
-                        <p className="text-slate-700 font-semibold">Maryland Institute of Technology and Management</p>
-                        <p>Department of Computer Science and Engineering</p>
-                        <p className="text-slate-400">Jamshedpur, East Singhbhum, Jharkhand</p>
-                    </div>
-                </div>
-            </footer>
-
         </div>
     );
 }
