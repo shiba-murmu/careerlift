@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -6,6 +7,13 @@ export default function Navbar() {
     const [activeDropdown, setActiveDropdown] = useState(null);
 
     const navbarRef = useRef(null);
+    const location = useLocation(); // Tracks the current active URL route
+
+    // FIX: Automatically close mobile drawer and desktop dropdowns on page navigation
+    useEffect(() => {
+        setIsOpen(false);
+        setActiveDropdown(null);
+    }, [location]); // Triggers every time the user moves to a new page
 
     // 1. Dynamic background adjustment on page scroll
     useEffect(() => {
@@ -39,11 +47,13 @@ export default function Navbar() {
     };
 
     return (
+        /* The main container uses 'sticky' so it creates a natural layout boundary, 
+           but remains 'relative' under the hood so absolute children map accurately. */
         <nav
             ref={navbarRef}
-            className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
-                    ? 'bg-white/80 backdrop-blur-md border-b border-slate-200/80 shadow-sm'
-                    : 'bg-slate-50 border-b border-transparent'
+            className={`sticky top-0 w-full z-50 transition-all duration-300 ${isScrolled
+                ? 'bg-white/80 backdrop-blur-md border-b border-slate-200/80 shadow-sm'
+                : 'bg-slate-50 border-b border-transparent'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,14 +61,14 @@ export default function Navbar() {
 
                     {/* Logo Brand Area */}
                     <div className="flex items-center flex-shrink-0">
-                        <a href="/" className="flex items-center space-x-2">
+                        <Link to="/" className="flex items-center space-x-2">
                             <span className="h-10 w-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-black text-xl shadow-md shadow-indigo-200">
                                 C
                             </span>
                             <span className="text-xl font-extrabold tracking-tight text-slate-900 font-display">
                                 CAREER<span className="text-indigo-600">LIFT</span>
                             </span>
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Desktop Navigation Menu */}
@@ -78,21 +88,21 @@ export default function Navbar() {
                             </button>
 
                             {activeDropdown === 'careers' && (
-                                <div className="absolute left-0 mt-2 w-80 rounded-2xl bg-white border border-slate-200 shadow-xl p-4 grid gap-2">
-                                    <a href="/explore" className="flex items-start p-2.5 rounded-xl hover:bg-slate-50 transition group">
+                                <div className="absolute left-0 mt-2 w-80 rounded-2xl bg-white border border-slate-200 shadow-xl p-4 grid gap-2 z-50">
+                                    <Link to="/explore" className="flex items-start p-2.5 rounded-xl hover:bg-slate-50 transition group">
                                         <div className="p-2 bg-indigo-50 rounded-lg text-indigo-600 group-hover:bg-indigo-100">🏁</div>
                                         <div className="ml-3">
                                             <p className="text-sm font-bold text-slate-900">Psychometric Discovery</p>
                                             <p className="text-xs text-slate-500">Assessments for 10th & 12th standards.</p>
                                         </div>
-                                    </a>
-                                    <a href="/streams" className="flex items-start p-2.5 rounded-xl hover:bg-slate-50 transition group">
+                                    </Link>
+                                    <Link to="/streams" className="flex items-start p-2.5 rounded-xl hover:bg-slate-50 transition group">
                                         <div className="p-2 bg-emerald-50 rounded-lg text-emerald-600 group-hover:bg-emerald-100">🌿</div>
                                         <div className="ml-3">
                                             <p className="text-sm font-bold text-slate-900">Stream Mapping</p>
                                             <p className="text-xs text-slate-500">Explore engineering, medical, & commerce paths.</p>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                             )}
                         </div>
@@ -111,26 +121,26 @@ export default function Navbar() {
                             </button>
 
                             {activeDropdown === 'colleges' && (
-                                <div className="absolute left-0 mt-2 w-80 rounded-2xl bg-white border border-slate-200 shadow-xl p-4 grid gap-2">
-                                    <a href="/colleges" className="flex items-start p-2.5 rounded-xl hover:bg-slate-50 transition group">
+                                <div className="absolute left-0 mt-2 w-80 rounded-2xl bg-white border border-slate-200 shadow-xl p-4 grid gap-2 z-50">
+                                    <Link to="/colleges" className="flex items-start p-2.5 rounded-xl hover:bg-slate-50 transition group">
                                         <div className="p-2 bg-amber-50 rounded-lg text-amber-600 group-hover:bg-amber-100">🏫</div>
                                         <div className="ml-3">
                                             <p className="text-sm font-bold text-slate-900">Localized Institutions</p>
                                             <p className="text-xs text-slate-500">Discover regional schools matching your cut-offs.</p>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                             )}
                         </div>
 
                         {/* Direct Links */}
-                        <a href="/jobs" className="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 transition-colors">
+                        <Link to="/jobsInternships" className="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 transition-colors">
                             Jobs & Internships
-                        </a>
+                        </Link>
 
-                        <a href="/dashboard" className="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 transition-colors">
+                        <Link to="/dashboard" className="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 transition-colors">
                             Progress Tracker
-                        </a>
+                        </Link>
 
                     </div>
 
@@ -144,9 +154,9 @@ export default function Navbar() {
                             <span>Ask AI Assistant</span>
                         </button>
                         <div className="h-4 w-[1px] bg-slate-300"></div>
-                        <button className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5">
+                        <Link to="/signIn" className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5">
                             Sign In
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Mobile Menu Toggle Button */}
@@ -168,19 +178,19 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* Smooth Animating Mobile Drawer Container */}
+            {/* Mobile Drawer Container */}
             <div
-                className={`lg:hidden bg-white border-b border-slate-200 px-4 pb-6 space-y-3 shadow-lg max-h-[calc(100vh-5rem)] overflow-y-auto transition-all duration-300 ease-in-out ${isOpen
-                        ? 'opacity-100 translate-y-0 pointer-events-auto block pt-2'
-                        : 'opacity-0 -translate-y-4 pointer-events-none hidden'
+                className={`absolute left-0 right-0 top-full lg:hidden bg-white border-t border-b border-slate-200 px-4 pb-6 space-y-3 shadow-xl max-h-[calc(100vh-5rem)] overflow-y-auto transition-all duration-300 ease-in-out z-50 ${isOpen
+                    ? 'opacity-100 translate-y-0 pointer-events-auto block pt-4'
+                    : 'opacity-0 -translate-y-4 pointer-events-none hidden'
                     }`}
             >
                 <div className="space-y-1">
                     <p className="px-3 py-2 text-xs font-bold uppercase tracking-wider text-slate-400">Navigation</p>
-                    <a href="/explore" className="block px-3 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors">Career Paths</a>
-                    <a href="/colleges" className="block px-3 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors">Find Colleges</a>
-                    <a href="/jobs" className="block px-3 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors">Jobs & Placement Opportunities</a>
-                    <a href="/dashboard" className="block px-3 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors">Progress Tracker</a>
+                    <Link to="/explore" className="block px-3 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors">Career Paths</Link>
+                    <Link to="/colleges" className="block px-3 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors">Find Colleges</Link>
+                    <Link to="/jobsInternships" className="block px-3 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors">Jobs & Placement Opportunities</Link>
+                    <Link to="/dashboard" className="block px-3 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors">Progress Tracker</Link>
                 </div>
 
                 <hr className="border-slate-200" />
@@ -189,9 +199,9 @@ export default function Navbar() {
                     <button className="w-full bg-indigo-50 text-indigo-600 font-bold py-3 px-4 rounded-xl text-center hover:bg-indigo-100 transition-colors">
                         🎙️ Open Voice Assistant
                     </button>
-                    <button className="w-full bg-slate-900 text-white font-bold py-3 px-4 rounded-xl text-center hover:bg-slate-800 transition-colors">
+                    <Link to='/signin' className="w-full bg-slate-900 text-white font-bold py-3 px-4 rounded-xl text-center hover:bg-slate-800 transition-colors">
                         Sign In Account
-                    </button>
+                    </Link>
                 </div>
             </div>
         </nav>
